@@ -14,12 +14,12 @@ const MakeAppointment = () => {
             <div className="flex-1 hidden lg:block">
                 <img className="mt-[-100px]" src={doctor} alt="" />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 px-5">
                 <h3 className="text-xl text-primary font-bold">Appointment</h3>
-                <h2 className="text-3xl text-white">
+                <h2 className="text-3xl text-white py-5">
                     Make an Appointment Today
                 </h2>
-                <p className="text-white">
+                <p className="text-white pb-5">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Aspernatur, esse vero! Minima accusamus sit obcaecati
                     provident sapiente quia perferendis reiciendis facilis eaque
@@ -28,7 +28,9 @@ const MakeAppointment = () => {
                     voluptatibus totam inventore numquam? Dolor quo voluptas,
                     ipsam porro alias repellat eligendi nulla?
                 </p>
-                <PrimaryButton>Get Started</PrimaryButton>
+                <div className="pb-5">
+                    <PrimaryButton>Get Started</PrimaryButton>
+                </div>
             </div>
         </section>
     );
