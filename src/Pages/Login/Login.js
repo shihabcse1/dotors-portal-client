@@ -6,6 +6,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
+import { Link } from "react-router-dom";
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] =
         useSignInWithGoogle(auth);
@@ -33,6 +34,10 @@ const Login = () => {
                 <small>{error?.message || gError?.message}</small>
             </p>
         );
+    }
+
+    if (user || gUser) {
+        console.log(user || gUser);
     }
 
     if (gUser) {
@@ -119,6 +124,14 @@ const Login = () => {
                             value="Login"
                         />
                     </form>
+                    <p>
+                        <small>
+                            New to Doctors Portal{" "}
+                            <Link className="text-primary" to="/signup">
+                                Create New Account
+                            </Link>
+                        </small>
+                    </p>
                     <div className="divider">OR</div>
 
                     <button
