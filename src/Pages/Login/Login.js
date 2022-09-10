@@ -5,6 +5,7 @@ import {
     useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import Loading from "../Shared/Loading";
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] =
         useSignInWithGoogle(auth);
@@ -23,7 +24,7 @@ const Login = () => {
     let signInError;
 
     if (loading || gLoading) {
-        return <button class="btn loading">loading</button>;
+        return <Loading></Loading>;
     }
 
     if (error || gError) {
