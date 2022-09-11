@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
     useSignInWithEmailAndPassword,
@@ -27,6 +27,13 @@ const Login = () => {
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
+    useEffect(() => {
+        if (user || gUser) {
+            navigate(from, { replace: true });
+            //console.log(user || gUser);
+        }
+    }, [user, gUser, from, navigate]);
+
     if (loading || gLoading) {
         return <Loading></Loading>;
     }
@@ -37,11 +44,6 @@ const Login = () => {
                 <small>{error?.message || gError?.message}</small>
             </p>
         );
-    }
-
-    if (user || gUser) {
-        navigate(from, { replace: true });
-        //console.log(user || gUser);
     }
 
     if (gUser) {
