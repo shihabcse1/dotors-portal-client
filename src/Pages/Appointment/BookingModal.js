@@ -2,8 +2,9 @@ import { format } from "date-fns";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import { toast } from "react-toastify";
 
-const BookingModal = ({ date, treatment, setTreatment }) => {
+const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
     const { _id, name, slots } = treatment;
     const [user, loading, error] = useAuthState(auth);
 
@@ -34,6 +35,15 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
             .then((res) => res.json())
             .then((data) => {
                 // to close the modal
+                console.log(data);
+                if (data.success) {
+                    toast(`Appointment is set, ${formatDate} at ${slot}`);
+                } else {
+                    toast.error(
+                        `Already have an appointment, ${data.booking?.data} at ${data.booking?.slot}`
+                    );
+                }
+                refetch();
                 setTreatment(null);
             });
     };
