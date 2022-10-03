@@ -50,9 +50,6 @@ const Login = () => {
         );
     }
 
-    if (gUser) {
-        console.log(gUser);
-    }
 
     return (
         <div className="flex h-screen justify-center items-center">
