@@ -13,6 +13,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyAppointment from "./Pages/Dashboard/MyAppointment";
 import Review from "./Pages/Home/Review";
 import MyReview from "./Pages/Dashboard/MyReview";
+import Users from "./Pages/Dashboard/Users";
 
 function App() {
     return (
@@ -45,6 +46,7 @@ function App() {
                         path="review"
                         element={<MyReview></MyReview>}
                     ></Route>
+                    <Route path="users" element={<Users></Users>}></Route>
                 </Route>
                 <Route path="/login" element={<Login></Login>} />
                 <Route path="/signup" element={<SignUp></SignUp>} />
