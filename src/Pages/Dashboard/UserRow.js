@@ -1,10 +1,15 @@
-import React from 'react';
+import React from "react";
 
 const UserRow = () => {
     return (
-        <div>
-            
-        </div>
+        <tr>
+            <th>1</th>
+            <td></td>
+            <td>{<button class="btn btn-xs">Make Admin</button>}</td>
+            <td>
+                <button class="btn btn-xs">Remove User</button>
+            </td>
+        </tr>
     );
 };
 
