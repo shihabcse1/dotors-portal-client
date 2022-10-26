@@ -1,22 +1,73 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useQuery } from "react-query";
+import { toast } from "react-toastify";
+import Loading from "../Shared/Loading";
 
 const AddDoctor = () => {
     const {
         register,
         formState: { errors },
         handleSubmit,
+        reset,
     } = useForm();
 
+    const { data: services, isLoading } = useQuery("services", () =>
+        fetch("http://localhost:5000/service").then((res) => res.json())
+    );
+
+    const imageStorageKey = "072292ba308ec5e69aa50591a9856767";
+
     const onSubmit = async (data) => {
-        console.log(data);
-        // console.log("update completed");
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append("image", image);
+        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+        fetch(url, {
+            method: "POST",
+            body: formData,
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                if (result.success) {
+                    const img = result.data.url;
+                    const doctor = {
+                        name: data.name,
+                        email: data.email,
+                        specialty: data.specialty,
+                        img: img,
+                    };
+                    // send to your database
+                    fetch("http://localhost:5000/doctor", {
+                        method: "POST",
+                        headers: {
+                            "content-type": "application/json",
+                            authorization: `Bearer ${localStorage.getItem(
+                                "accessToken"
+                            )}`,
+                        },
+                        body: JSON.stringify(doctor),
+                    })
+                        .then((res) => res.json())
+                        .then((inserted) => {
+                            if (inserted.insertedId) {
+                                toast.success("Doctor added successfully");
+                                reset();
+                            } else {
+                                toast.error("Failed to add the doctor");
+                            }
+                        });
+                }
+            });
     };
+
+    if (isLoading) {
+        return <Loading></Loading>;
+    }
 
     return (
         <div>
-            <h1>Add Doctor</h1>
-
+            <h2 className="text-2xl">Add a New Doctor</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
@@ -33,7 +84,6 @@ const AddDoctor = () => {
                             },
                         })}
                     />
-
                     <label className="label">
                         {errors.name?.type === "required" && (
                             <span className="label-text-alt text-red-500">
@@ -42,6 +92,7 @@ const AddDoctor = () => {
                         )}
                     </label>
                 </div>
+
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Email</span>
@@ -57,11 +108,10 @@ const AddDoctor = () => {
                             },
                             pattern: {
                                 value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                message: "Provide a Valid Email",
+                                message: "Provide a valid Email",
                             },
                         })}
                     />
-
                     <label className="label">
                         {errors.email?.type === "required" && (
                             <span className="label-text-alt text-red-500">
@@ -80,29 +130,45 @@ const AddDoctor = () => {
                     <label className="label">
                         <span className="label-text">Specialty</span>
                     </label>
+                    <select
+                        {...register("specialty")}
+                        class="select input-bordered w-full max-w-xs"
+                    >
+                        {services.map((service) => (
+                            <option key={service._id} value={service.name}>
+                                {service.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Photo</span>
+                    </label>
                     <input
                         type="file"
-                        placeholder="Password"
                         className="input input-bordered w-full max-w-xs"
-                        {...register("specialty", {
+                        {...register("image", {
                             required: {
                                 value: true,
-                                message: "specialty is Required",
+                                message: "Image is Required",
                             },
                         })}
                     />
                     <label className="label">
-                        {errors.password?.type === "required" && (
+                        {errors.name?.type === "required" && (
                             <span className="label-text-alt text-red-500">
-                                {errors.password.message}
+                                {errors.name.message}
                             </span>
                         )}
                     </label>
                 </div>
+
                 <input
                     className="btn w-full max-w-xs text-white"
                     type="submit"
-                    value="Sign Up"
+                    value="Add"
                 />
             </form>
         </div>
