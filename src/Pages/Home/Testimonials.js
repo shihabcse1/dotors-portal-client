@@ -9,23 +9,23 @@ const Testimonials = () => {
     const reviews = [
         {
             _id: 1,
-            name: "Winson Herry",
-            review: "",
+            name: "Winson Ron",
+            review: "This portal have even more helpful options. Patients may be able to schedule or cancel appointments",
             location: "California",
             img: people1,
         },
         {
             _id: 2,
-            name: "Winson Herry",
-            review: "",
-            location: "California",
+            name: "Roi Herry",
+            review: "Since digital options are becoming more available in the health industry, it’s no surprise that there was an increase.",
+            location: "Florida",
             img: people2,
         },
         {
             _id: 3,
-            name: "Winson Herry",
-            review: "",
-            location: "California",
+            name: "Hardik Pandey",
+            review: "People can log on to their account to view their PHI such as lab results, immunizations, prescriptions, appointment visit notes.",
+            location: "Texas",
             img: people3,
         },
     ];

@@ -20,13 +20,11 @@ const MakeAppointment = () => {
                     Make an Appointment Today
                 </h2>
                 <p className="text-white pb-5">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Aspernatur, esse vero! Minima accusamus sit obcaecati
-                    provident sapiente quia perferendis reiciendis facilis eaque
-                    nesciunt? Optio voluptates adipisci sed fugit dolores
-                    veritatis odit! Assumenda ad facere pariatur dolorum nam
-                    voluptatibus totam inventore numquam? Dolor quo voluptas,
-                    ipsam porro alias repellat eligendi nulla?
+                    Find your doctor easily with a minimum of effort. We've kept
+                    everything organised for you. Ask for an appointment of the
+                    doctor quickly with almost a single click. We take care of
+                    the rest. Visit the doctor, take the service based on your
+                    appointment. Get back to good health and happiness.
                 </p>
                 <div className="pb-5">
                     <PrimaryButton>Get Started</PrimaryButton>
