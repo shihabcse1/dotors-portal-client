@@ -1,9 +1,12 @@
 import React from "react";
+import Footer from "../Shared/Footer";
+import AboutDoctorsPortal from "./AboutDoctorsPortal";
 
 const About = () => {
     return (
         <div>
-            <h1>About</h1>
+            <AboutDoctorsPortal></AboutDoctorsPortal>
+            <Footer></Footer>
         </div>
     );
 };
