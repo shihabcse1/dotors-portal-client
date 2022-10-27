@@ -11,12 +11,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyAppointment from "./Pages/Dashboard/MyAppointment";
-import Review from "./Pages/Home/Review";
 import MyReview from "./Pages/Dashboard/MyReview";
 import AddDoctor from "./Pages/Dashboard/AddDoctor";
 import Users from "./Pages/Dashboard/Users";
 import RequireAdmin from "./Pages/Login/RequireAdmin";
 import ManageDoctors from "./Pages/Dashboard/ManageDoctors";
+import Reviews from "./Pages/Reviews/Reviews";
 
 function App() {
     return (
@@ -24,7 +24,8 @@ function App() {
             <Navbar></Navbar>
             <Routes>
                 <Route path="/" element={<Home></Home>} />
-                <Route path="/about" element={<About></About>} />
+                <Route path="about" element={<About></About>} />
+                <Route path="reviews" element={<Reviews></Reviews>} />
                 <Route
                     path="/appointment"
                     element={
