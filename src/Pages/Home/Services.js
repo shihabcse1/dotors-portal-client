@@ -9,19 +9,22 @@ const Services = () => {
         {
             _id: 1,
             name: "Flurida Treatment",
-            description: "",
+            description:
+                "It works by strengthening tooth enamel, making it more resistant to decay.",
             img: fluoride,
         },
         {
             _id: 2,
             name: "Cavity Filling",
-            description: "",
+            description:
+                "Most fillings cause little to no discomfort during any part of the procedure",
             img: cavity,
         },
         {
             _id: 3,
             name: "Teeth Whitening",
-            description: "",
+            description:
+                "Whiten teeth by removing stains is whitening toothpaste",
             img: whitening,
         },
     ];
