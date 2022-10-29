@@ -2,6 +2,7 @@ import React from "react";
 import doctor from "../../assets/images/doctor.png";
 import appointment from "../../assets/images/appointment.png";
 import PrimaryButton from "../Shared/PrimaryButton";
+import { Link } from "react-router-dom";
 
 const MakeAppointment = () => {
     return (
@@ -27,7 +28,9 @@ const MakeAppointment = () => {
                     appointment. Get back to good health and happiness.
                 </p>
                 <div className="pb-5">
-                    <PrimaryButton>Get Started</PrimaryButton>
+                    <PrimaryButton>
+                        <Link to="/appointment">Get Started</Link>
+                    </PrimaryButton>
                 </div>
             </div>
         </section>
