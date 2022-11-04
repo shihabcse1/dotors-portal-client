@@ -19,9 +19,9 @@ const AvailiableAppointments = ({ date }) => {
         refetch,
         data: services,
     } = useQuery(["available", formatDate], () =>
-        fetch(`http://localhost:5000/available?date=${formatDate}`).then(
-            (res) => res.json()
-        )
+        fetch(
+            `https://aqueous-garden-58368.herokuapp.com/available?date=${formatDate}`
+        ).then((res) => res.json())
     );
 
     if (isLoading) {
@@ -29,7 +29,7 @@ const AvailiableAppointments = ({ date }) => {
     }
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/available?date=${formatDate}`)
+    //     fetch(`https://aqueous-garden-58368.herokuapp.com/available?date=${formatDate}`)
     //         .then((res) => res.json())
     //         .then((data) => setServices(data));
     // }, [formatDate]);

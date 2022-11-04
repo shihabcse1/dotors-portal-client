@@ -13,7 +13,9 @@ const AddDoctor = () => {
     } = useForm();
 
     const { data: services, isLoading } = useQuery("services", () =>
-        fetch("http://localhost:5000/service").then((res) => res.json())
+        fetch("https://aqueous-garden-58368.herokuapp.com/service").then(
+            (res) => res.json()
+        )
     );
 
     const imageStorageKey = "072292ba308ec5e69aa50591a9856767";
@@ -38,7 +40,7 @@ const AddDoctor = () => {
                         img: img,
                     };
                     // send to your database
-                    fetch("http://localhost:5000/doctor", {
+                    fetch("https://aqueous-garden-58368.herokuapp.com/doctor", {
                         method: "POST",
                         headers: {
                             "content-type": "application/json",
