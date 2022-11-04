@@ -11,11 +11,12 @@ appointment, send emails, payment method and CRUD operation
 
 ## Features
 
--   Login and Registration System
+-   Login and Registration System with JWT
 -   Social Login System
 -   Booking an appointment by picking a date for a patient
 -   Data will store in MongoDB
 -   Private and Public route
+-   Notification after complete or incomplete request
 -   Admin will able to add an doctor wit image
 -   Admin will able to make user to an admin Role
 -   Admin will able to delete a doctor
@@ -39,6 +40,13 @@ appointment, send emails, payment method and CRUD operation
 -   React hook form
 -   React firebase hook
 
+### Technology Used for Backend
+
+-   Express
+-   MongoDB
+-   Dotenv
+-   JSON Web Token
+
 ### Backend Repository Link
 
-## [Click Here to go to Backend Repository Link](https://github.com/shihabcse1/doctors-portal-server)
+## [Click here to get backend repository link](https://github.com/shihabcse1/doctors-portal-server)
